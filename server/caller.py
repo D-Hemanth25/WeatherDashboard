@@ -25,9 +25,11 @@ def getCurrentWeather(location):
     placeObject = getLocationDetails(location)
     latitude, longitude = placeObject["latitude"], placeObject["longitude"]
     response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={KEY}")
+    
+    iconId = response.json()["weather"][0]["icon"]
     weatherObject = {
         "description": response.json()["weather"][0]["description"],
-        "icon": response.json()["weather"][0]["icon"],
+        "icon": f"https://openweathermap.org/img/wn/{iconId}@2x.png",
         "temperature": response.json()["main"]["temp"],
         "feel": response.json()["main"]["feels_like"],
         "min": response.json()["main"]["temp_min"],
