@@ -15,7 +15,7 @@ function Dashboard(){
 
     return(
         <>
-            <input text="text" placeholder="enter location" onChange={ (event)=> setItem(event.target.value)} />
+            <input text="text" placeholder="enter location" onChange={ (event)=> setItem(event.target.value)} value={item} />
             <button onClick={addItem}>Add</button>
             <ul>
                 {items.map((name) => (
